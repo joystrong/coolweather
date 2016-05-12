@@ -5,9 +5,23 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.json.JSONObject;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class HttpUtil {
 
+	/**
+	 * ÇëÇóÊý¾Ý
+	 * @param address
+	 * @param listener
+	 */
 	public static void sendHttpRequest(final String address,final HttpCallbackListener listener)
 	{
 		new Thread(new Runnable() {
@@ -44,9 +58,6 @@ public class HttpUtil {
 						connectioin.disconnect();
 					}
 				}
-				
-				
-				
 			}
 		}).start();
 	}
