@@ -19,7 +19,7 @@ import com.coolweather.app.model.Province;
 public class Utility {
 
 	/**
-	 * ½âÎöºÍ´¦Àí·şÎñÆ÷·µ»ØµÄÊ¡¼¶Êı¾İ
+	 *
 	 * @param coolWeatherDB
 	 * @param response
 	 * @return
@@ -36,7 +36,6 @@ public class Utility {
 					Province province = new Province();
 					province.setProvinceCode(array[0]);
 					province.setProvinceName(array[1]);
-					//´æ´¢½âÎö³öÀ´µÄÊı¾İ
 					coolWeatherDB.saveProvince(province);
 				}
 				return true;
@@ -58,7 +57,6 @@ public class Utility {
 					city.setCityCode(array[0]);
 					city.setCityName(array[1]);
 					city.setProvinceId(provinceId);
-					//½«½âÎö³öÀ´µÄÊı¾İ´æ´¢µ½city±í
 					coolWeatherDB.saveCity(city);
 				}
 				return true;
@@ -108,7 +106,7 @@ public class Utility {
 
 	public static void saveWeatherInfo(Context context,String cityName,String weatherCode,String temp1,String temp2,String weatherDesp,String publishTime)
 	{
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyÄêMÔÂdÈÕ",Locale.CHINA);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyå¹´Mæœˆdæ—¥",Locale.CHINA);
 		SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
 		editor.putBoolean("city_selected", true);
 		editor.putString("city_name", cityName);

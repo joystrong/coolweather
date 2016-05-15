@@ -108,7 +108,7 @@ public class ChooseAreaActivity extends Activity {
 			}
 			adapter.notifyDataSetChanged();
 			listView.setSelection(0);
-			titleText.setText("ÖÐ¹ú");
+			titleText.setText("ä¸­å›½");
 			currentLevel = LEVEL_PROVINCE;
 		}else{
 			queryFromServer(null, "province");
@@ -198,7 +198,7 @@ public class ChooseAreaActivity extends Activity {
 				runOnUiThread(new Runnable() {
 					public void run() {
 						closeProgressDialog();
-						Toast.makeText(ChooseAreaActivity.this, "¼ÓÔØÊ§°Ü¡¤¡¤¡¤", Toast.LENGTH_SHORT).show();
+						Toast.makeText(ChooseAreaActivity.this, "åŠ è½½å¤±è´¥", Toast.LENGTH_SHORT).show();
 					}
 				});
 			}
@@ -206,20 +206,20 @@ public class ChooseAreaActivity extends Activity {
 	}
 	
 	/**
-	 * ÏÔÊ¾½ø¶È¶Ô»°¿ò
+	 * 
 	 */
 	private void showProgressDialog(){
 		if(progressDialog == null)
 		{
 			progressDialog = new ProgressDialog(this);
-			progressDialog.setMessage("ÕýÔÚ¼ÓÔØ¡¤¡¤¡¤");
+			progressDialog.setMessage("åŠ è½½ä¸­");
 			progressDialog.setCanceledOnTouchOutside(false);
 		}
 		progressDialog.show();
 	}
 	
 	/**
-	 * ¹Ø±Õ½ø¶È¶Ô»°¿ò
+	 * 
 	 */
 	private void closeProgressDialog(){
 		if(progressDialog != null){

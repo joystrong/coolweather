@@ -12,7 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.coolweather.app.R;
+import com.coolweather.app.service.AutoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
@@ -45,15 +47,11 @@ public class WeatherActivity extends Activity implements OnClickListener {
 		refreshWeather = (Button)findViewById(R.id.refresh_weather);
 		String countyCode = getIntent().getStringExtra("county_code");
 		if(!TextUtils.isEmpty(countyCode)){
-			publishText.setText("Í¬²½ÖĞ¡¤¡¤¡¤");
+			publishText.setText("åŒæ­¥ä¸­Â·Â·Â·");
 			weatherInfoLayout.setVisibility(View.INVISIBLE);
 			cityNameText.setVisibility(View.INVISIBLE);
-			//²éÑ¯ÌìÆøcode
-			Log.d("cool", countyCode);
 			queryWeatherCode(countyCode);
 		}else{
-			//Ã»ÓĞÏØ¼¶´úºÅ¾ÍÖ±½ÓÏÔÊ¾±¾µØÌìÆø
-			Log.d("cool", "Ã»ÓĞ");
 			showWeather();
 		}
 		switchCity.setOnClickListener(this);
@@ -97,25 +95,27 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			public void onError(Exception e) {
 				runOnUiThread(new Runnable() {
 					public void run() {
-						publishText.setText("Í¬²½Ê§°Ü");
+						publishText.setText("åŒæ­¥å¤±è´¥");
 					}
 				});
 			}
 		});
 	}
 	/**
-	 * ´ÓsharedpreferencesÎÄ¼ş¶ÁÈ¡´æ´¢µÄÌìÆøĞÅÏ¢£¬²¢ÏÔÊ¾µ½½çÃæ
+	 * 
 	 */
 	private void showWeather(){
 		SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
-		cityNameText.setText(prefs.getString("city_name", "Ä¬ÈÏ³ÇÊĞ"));
-		temp1Text.setText(prefs.getString("temp1", "Ä¬ÈÏ×î¸ßÎÂ¶È"));
-		temp2Text.setText(prefs.getString("temp2", "Ä¬ÈÏ×îµÍÎÂ¶È"));
-		weatherDespText.setText(prefs.getString("weather_desp", "ÎÂ¶ÈÃèÊö"));
-		publishText.setText("½ñÌì"+prefs.getString("publish_time", "")+"·¢²¼");
-		currentDateText.setText(prefs.getString("current_date", "µ±Ç°ÈÕÆÚ"));
+		cityNameText.setText(prefs.getString("city_name", ""));
+		temp1Text.setText(prefs.getString("temp1", ""));
+		temp2Text.setText(prefs.getString("temp2", ""));
+		weatherDespText.setText(prefs.getString("weather_desp", ""));
+		publishText.setText("ä»Šå¤©"+prefs.getString("publish_time", "")+"å‘å¸ƒ");
+		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		Intent intent = new Intent(this,AutoUpdateService.class);
+		startService(intent);
 	}
 	@Override
 	public void onClick(View v) {
@@ -127,7 +127,7 @@ public class WeatherActivity extends Activity implements OnClickListener {
 			finish();
 			break;
 		case R.id.refresh_weather:
-			publishText.setText("Í¬²½ÖĞ¡¤¡¤¡¤");
+			publishText.setText("åŒæ­¥ä¸­Â·Â·Â·");
 			SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 			String weatherCode = prefs.getString("weather_code", "");
 			if(!TextUtils.isEmpty(weatherCode)){

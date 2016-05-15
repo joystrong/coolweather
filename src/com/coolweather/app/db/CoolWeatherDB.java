@@ -28,7 +28,7 @@ public class CoolWeatherDB {
 		db = dbHelper.getWritableDatabase();
 	}
 	/**
-	 * 获取CoolWeatherDB的实例
+	 * 
 	 * @param context
 	 * @return
 	 */
@@ -40,7 +40,7 @@ public class CoolWeatherDB {
 		return coolWeatherDB;
 	}
 	/**
-	 * 将province实例存储到数据库
+	 * 
 	 * @param province
 	 */
 	public void saveProvince(Province province){
@@ -53,7 +53,7 @@ public class CoolWeatherDB {
 		}
 	}
 	/**
-	 * 从数据库读取所有的省份信息
+	 * 
 	 * @return
 	 */
 	public List<Province> loadProvinces()
@@ -73,7 +73,7 @@ public class CoolWeatherDB {
 		return list;
 	}
 	/**
-	 * 将city实例存储到数据库
+	 * 
 	 * @param city
 	 */
 	public void saveCity(City city)
@@ -106,7 +106,7 @@ public class CoolWeatherDB {
 		return list;
 	}
 	/**
-	 * 将county实例存储到数据库
+	 * 
 	 * @param county
 	 */
 	public void saveCountry(County county)

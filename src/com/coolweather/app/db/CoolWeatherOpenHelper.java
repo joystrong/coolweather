@@ -8,14 +8,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 
 	/**
-	 * province表创建语句
+	 * province
 	 */
 	public static final String CREATE_PROVINCE = "create table province (" +
 			"id integer primary key autoincrement," +
 			"province_name text," +
 			"province_code text)";
 	/**
-	 * city表创建语句
+	 * city
 	 */
 	public static final String CREATE_CITY = "create table city (" +
 			"id integer primary key autoincrement," +
@@ -23,7 +23,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 			"city_code text," +
 			"province_id integer)";
 	/**
-	 * county表创建语句
+	 * county
 	 */
 	public static final String CREATE_COUNTY = "create table county (" +
 			"id integer primary key autoincrement," +
@@ -35,9 +35,9 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 	}
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		db.execSQL(CREATE_PROVINCE);//创建省
-		db.execSQL(CREATE_CITY);//创建市
-		db.execSQL(CREATE_COUNTY);//创建县
+		db.execSQL(CREATE_PROVINCE);//
+		db.execSQL(CREATE_CITY);//
+		db.execSQL(CREATE_COUNTY);//
 	}
 
 	@Override
